@@ -41,10 +41,12 @@
             <h1 class="sub-title-v1">About Me</h1>
             <p>TESSSTTT</p>
 
-            <div class="tab-titles">
-                <p class="tab-links active" onclick="opentab('skills')">Skills</p>
-                <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                <p class="tab-links" onclick="opentab('education')">Education</p>
+            <div class="tab-box">
+                <div class="tab-titles">
+                    <p class="tab-links active" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
             </div>
 
             <div class="tab-contents active" id="skills"> 
@@ -123,9 +125,9 @@
                     <input type = "text" name = "Name" placeholder = "Your Name" required>
                     <input type = "email" name = "Email" placeholder= "Your Email" required>
                     <textarea name="Message" rows="6" placeholder= "Your Message"></textarea>
+                    <span id="Warning">Form only delivers via Chrome</span>
                     <button type = "submit" class="btn btn2">Submit</button>
                 </form>
-                <span id="Warning">Form only delivers via Chrome</span>
 
             </div>
         </div>
@@ -158,6 +160,26 @@
       .then(response => form.reset())
       .catch(error => console.error('Error!', error.message))
   })
+</script>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName('tab-contents');
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active");
+        }
+
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active");
+        }
+
+        event.currentTarget.classList.add("active");
+        document.getElementById(tabname).classList.add("active");
+    }
+
+
 </script>
 </body>
 </html>
