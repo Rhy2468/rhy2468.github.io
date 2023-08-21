@@ -75,16 +75,16 @@ nav ul li a:hover::after{
     color: #082989;
 }
 
-.about-col-1{
+.col-1{
     flex-basis: 35%;
 }
 
-.about-col-1 img{
+.col-1 img{
     width: 125%;
     border-radius: 15px;
 }
 
-.about-col-2{
+.col-2{
     flex-basis: 50%;
 }
 
@@ -121,6 +121,50 @@ nav ul li a:hover::after{
     color: #000;
 }
 
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+
+.tab-links{
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px; 
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+
+.tab-links.active::after{
+    width: 50%;
+}
+
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+
+.tab-contents ul li span{
+    font-size: 14px;
+}
+
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active{
+    display: block;
+}
 /*---------------------Portfolio------------------------*/
 #portfolio{
     padding: 50px 0;
