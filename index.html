@@ -13,12 +13,14 @@
     <div class="container">
         <nav>
             <img src="logo.png" class="logo">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About Me</a></li>
-                <li><a href="#">My Work</a></li>
-                <li><a href="#">Contact Me</a></li>
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#portfolio">My Work</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+                <i class="fa-solid fa-x" onclick="closeMenu()"></i>
             </ul>
+            <i class="fa-solid fa-bars" onclick="openMenu()"></i>
         </nav>
         <div class="row">
             <div class="col-1">
@@ -102,7 +104,7 @@
         <a href="#" class="btn">See more</a>
     </div>
 </div>
-<!--------------------portfolio---------------------->
+<!--------------------contact---------------------->
 <div id="contact">
     <div class="container">
         <div class="row">
@@ -111,17 +113,20 @@
                 <p><i class="fas fa-paper-plane"></i>rickyxianyang@gmail.com</p>
                 <p><i class = "fas fa-phone-square-alt"></i>403-919-8699</p>
                 <div class="social-icons">
-                    <a href=""><i class = "fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/ricky-yang-731166249/"><i class="fa-brands fa-linkedin"></i>
+                    <a href="https://www.instagram.com/ricky.h.y/"><i class="fa-brands fa-square-instagram"></i>
                 </div>
                 <a href="ricky_yang_resume.pdf" download class="btn btn2"> Download CV</a>
             </div>
             <div class="contact-right">
-                <form>
-                    <input type = "text" name = "name" placeholder = "Your Name" required>
-                    <input type = "email" name = "email" placeholder= "Your Email" required>
+                <form name="submit-to-google-sheet">
+                    <input type = "text" name = "Name" placeholder = "Your Name" required>
+                    <input type = "email" name = "Email" placeholder= "Your Email" required>
                     <textarea name="Message" rows="6" placeholder= "Your Message"></textarea>
                     <button type = "submit" class="btn btn2">Submit</button>
                 </form>
+                <span id="Warning">Form only delivers via Chrome</span>
+
             </div>
         </div>
     </div>
@@ -129,5 +134,30 @@
         <p>Copyright @ Ricky.</p>
     </div>
 </div>
+
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openMenu(){
+        sidemenu.style.right = "0";
+    }
+
+    function closeMenu(){
+        sidemenu.style.right= "-200px";
+    }
+
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzSBDd05dZ5a884xW5sIAQleaXkBRlFIKzNjG89S9s06PUs8NSIohHY_9qFnb7A5DmBYw/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => form.reset())
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
